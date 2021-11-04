@@ -15,4 +15,6 @@ MonoBehaviour:
   _languageLocalizations:
   - {fileID: 11400000, guid: ef83cb6c6dc675c41b434c29ee407b80, type: 2}
   - {fileID: 11400000, guid: 2b319fd80c0131a4c944340f866ee7a4, type: 2}
+  - {fileID: 11400000, guid: c93348e85e4b5e24694bc9f3ff016814, type: 2}
+  - {fileID: 11400000, guid: 193467d867056654ca0f9de60211593e, type: 2}
   _defaultBoardLocalizationIndex: 0

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191df59c4c8d55b4ba4550fac49ba151, type: 3}
-  m_Name: SpanishLocalizationSO
+  m_Name: FrenchLocalization
   m_EditorClassIdentifier: 
-  _languageName: "Espa\xF1ol"
+  _languageName: "Fran\xE7ais"
   _numberNameKeys:
-  - Zero
-  - Uno
-  - Dos
-  - Tres
-  - Cuatro
-  - Cinco
-  - Seis
-  - Siete
-  - Ocho
-  - Nueve
-  - Diez
+  - "Z\xE9ro"
+  - Un
+  - Deux
+  - Trois
+  - Quatre
+  - Cinq
+  - Six
+  - Sept
+  - Huit
+  - Neuf
+  - Dix

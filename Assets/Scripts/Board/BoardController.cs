@@ -25,6 +25,12 @@ namespace GuessTheNumber.Board
             }
             _view.GetStartGameEvent().AddListener(() =>
             {
+                _model.RoundsFailed = 0;
+                _model.RoundsSuccessfull = 0;
+                
+                _view.SetUserFails(_model.RoundsFailed.ToString());
+                _view.SetUserSuccesses(_model.RoundsSuccessfull.ToString());
+                
                 _view.gameObject.SetActive(true);
                 SetNewRound();
             });
