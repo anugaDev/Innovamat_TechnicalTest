@@ -1,4 +1,5 @@
 ﻿using GuessTheNumber.Board;
+using GuessTheNumber.Localization;
 using GuessTheNumber.Panel;
 using TMPro;
 using UnityEngine;
@@ -10,10 +11,8 @@ namespace GuessTheNumber.Board
         [SerializeField] private BoardView _view;
         [SerializeField] private NumberDisplayPanelView _displayNumber;
         
-        public void Install(BoardConfiguration boardConfiguration)
+        public void Install(BoardModel model, BoardConfiguration boardConfiguration)
         {
-            var model = new BoardModel(boardConfiguration);
-            
             SetBoardView(boardConfiguration);
             
             var controller = new BoardController(model, _view);

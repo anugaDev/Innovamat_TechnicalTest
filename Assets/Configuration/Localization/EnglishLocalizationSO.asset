@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191df59c4c8d55b4ba4550fac49ba151, type: 3}
   m_Name: EnglishLocalizationSO
   m_EditorClassIdentifier: 
-  _localizationID: English
-  _exerciseStatementKey: Guess the number...
-  _failsKey: Fails
-  _successesKey: Successes
+  _languageName: English
   _numberNameKeys:
   - Zero
   - One

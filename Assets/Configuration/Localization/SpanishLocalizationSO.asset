@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191df59c4c8d55b4ba4550fac49ba151, type: 3}
   m_Name: SpanishLocalizationSO
   m_EditorClassIdentifier: 
-  _localizationID: "Espa\xF1ol"
-  _exerciseStatementKey: "Identifica el n\xFAmero..."
-  _failsKey: Fallos
-  _successesKey: Aciertos
+  _languageName: "Espa\xF1ol"
   _numberNameKeys:
   - Zero
   - Uno

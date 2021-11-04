@@ -2,6 +2,7 @@
 using System.Collections;
 using GuessTheNumber.Panel;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace GuessTheNumber.Board
@@ -15,7 +16,9 @@ namespace GuessTheNumber.Board
         [SerializeField] private DisplayPanelView _textPanelView;
         
         private NumberDisplayPanelView[] _numberDisplayPanelViews;
-
+        private UnityEvent _startGame = new UnityEvent();
+        private UnityEvent _endGame = new UnityEvent();
+        
         public void SetNumberDisplayPanels(NumberDisplayPanelView[] numberDisplayPanelViews)
         {
             _numberDisplayPanelViews = numberDisplayPanelViews;
@@ -35,7 +38,17 @@ namespace GuessTheNumber.Board
         {
             return _numberDisplayPanelViews[index];
         }
-
+        
+        public UnityEvent GetStartGameEvent()
+        {
+            return _startGame;
+        }
+        
+        public UnityEvent GetEndGameEvent()
+        {
+            return _endGame;
+        }
+        
         public void SetBlockInputActive(bool active)
         {
             _blockinput.SetActive(active);
@@ -63,12 +76,31 @@ namespace GuessTheNumber.Board
             }
         }
 
-        public void HidePanelNumbers()
+        public void CloseNumbersWithAnimation()
         {
-            foreach(var  panel in _numberDisplayPanelViews)
+            foreach (var panel in _numberDisplayPanelViews)
             {
                 panel.GetCloseAnimation().gameObject.SetActive(true);
             }
+        }
+
+        public void HideNumbers()
+        {
+            foreach (var panel in _numberDisplayPanelViews)
+            {
+                panel.GetContentPanel().SetActive(false);
+                panel.GetCloseAnimation().gameObject.SetActive(false);
+            }
+        }
+
+        public void StartGame()
+        {
+            _startGame.Invoke();
+        }
+        
+        public void EndGame()
+        {
+            _endGame.Invoke();
         }
 
         public IEnumerator CallActionAfterTime(float time, Action action)

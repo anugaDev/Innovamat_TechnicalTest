@@ -1,9 +1,11 @@
-﻿namespace GuessTheNumber.Board
+﻿using GuessTheNumber.Localization;
+
+namespace GuessTheNumber.Board
 {
     public class BoardModel
     {
         private BoardConfiguration _boardConfiguration;
-        private LanguageLocalizationSO _currentLocalization;
+        private string[] _numbers;
         
         private int _roundsSuccessfull;
         private int _roundsFailed;
@@ -42,22 +44,25 @@
             set => _currentDisplayedNumbers = value;
         }
 
+        public void SetNumberList(string[] numbers)
+        {
+            _numbers = numbers;
+        }
+
         public BoardModel(BoardConfiguration boardConfiguration)
         {
             _boardConfiguration = boardConfiguration;
             _currentDisplayedNumbers = new int[boardConfiguration.DispayedNumberPanels];
-            _currentLocalization =
-                _boardConfiguration.BoardLocalizations[_boardConfiguration.CurrentBoardLocalizationIndex];
         }
 
         public int GetMaxPossibleNumber()
         {
-            return _currentLocalization.NumberNames.Length;
+            return _numbers.Length;
         }
 
-        public string GetLocalizedNumber(int number)
+        public string GetNumber(int numberIndex)
         {
-            return _currentLocalization.NumberNames[number];
+            return _numbers[numberIndex];
         }
 
         public bool IsCurrentRoundFailed()

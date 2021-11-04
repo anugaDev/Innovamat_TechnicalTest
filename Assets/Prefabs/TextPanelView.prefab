@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f8dc2ced409954f8b44c76cb60479d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentPanel: {fileID: 3855085078339431129}
   _button: {fileID: 0}
   _displayedText: {fileID: 3855085079306222022}
   _openAnimation: {fileID: 3855085079842500995}

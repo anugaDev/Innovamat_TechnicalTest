@@ -23,8 +23,15 @@ namespace GuessTheNumber.Board
                     CheckChosenPanel(panel);
                 });
             }
-            
-            SetNewRound();
+            _view.GetStartGameEvent().AddListener(() =>
+            {
+                _view.gameObject.SetActive(true);
+                SetNewRound();
+            });
+            _view.GetEndGameEvent().AddListener(() =>
+            {
+                ExitGame();
+            });
         }
 
         private void SetNewRound()
@@ -48,8 +55,14 @@ namespace GuessTheNumber.Board
                 
                 numberPanel.GetPanelButton().interactable = true;
             }
-
+            
             SetNumber();
+            
+            _view.StartCoroutine(_view.CallActionAfterTime((float) _view.GetTextPanel().GetOpenAnimation().duration,
+                () =>
+                {
+                    _view.StartCoroutine(_view.CallActionAfterTime(_model.GetNumberDisplayTime(), HideText));
+                }));
         }
 
         private void SetNumber()
@@ -58,16 +71,9 @@ namespace GuessTheNumber.Board
 
             var correctNumber = _model.CurrentDisplayedNumbers[_model.CurrentNumberIndex];
             
-            _view.GetTextPanel().SetPanelText(_model.GetLocalizedNumber(correctNumber));
+            _view.GetTextPanel().SetPanelText(_model.GetNumber(correctNumber));
 
             _view.GetTextPanel().GetOpenAnimation().Play();
-
-            _view.StartCoroutine(_view.CallActionAfterTime((float) _view.GetTextPanel().GetOpenAnimation().duration,
-                () =>
-                {
-                    _view.StartCoroutine(_view.CallActionAfterTime(_model.GetNumberDisplayTime(), HideText));
-
-                }));
         }
 
         private void HideText()
@@ -124,12 +130,18 @@ namespace GuessTheNumber.Board
 
             _view.StartCoroutine(_view.CallActionAfterTime((float)_view.GetNumberDisplayPanel(winningPanelIndex).GetSuccessAnimation().duration, () =>
             {
-                _view.HidePanelNumbers();
+                _view.CloseNumbersWithAnimation();
 
                 _view.StartCoroutine(_view.CallActionAfterTime(
                     (float) _view.GetNumberDisplayPanel(0).GetCloseAnimation().duration, SetNewRound));
             }));
-
+        }
+        
+        private void ExitGame()
+        {
+            _view.HideNumbers();
+            _view.StopAllCoroutines();
+            _view.gameObject.SetActive(false);
         }
     }
 }

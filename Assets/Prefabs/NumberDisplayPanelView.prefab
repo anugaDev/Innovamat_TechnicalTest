@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcc76a9561d8384b89955fa252096a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentPanel: {fileID: 5292779734745964963}
   _button: {fileID: 4333573011114140732}
   _displayedText: {fileID: 4333573010007115108}
   _openAnimation: {fileID: 5612249806138059484}

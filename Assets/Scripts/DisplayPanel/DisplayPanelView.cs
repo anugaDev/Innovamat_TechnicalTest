@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GuessTheNumber.Localization;
+using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace GuessTheNumber.Panel
 {
     public class DisplayPanelView : MonoBehaviour
     {
+        [SerializeField] private GameObject _contentPanel;
         [SerializeField] private Button _button;
         [SerializeField] private Text _displayedText;
         [SerializeField] private PlayableDirector _openAnimation;
@@ -29,6 +31,11 @@ namespace GuessTheNumber.Panel
         public PlayableDirector GetCloseAnimation()
         {
             return _closeAnimation;
+        }
+
+        public GameObject GetContentPanel()
+        {
+            return _contentPanel;
         }
         
     }

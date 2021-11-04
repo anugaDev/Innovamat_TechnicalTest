@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GuessTheNumber.Localization;
+using UnityEngine;
 
 namespace GuessTheNumber.Board
 {
@@ -9,18 +10,10 @@ namespace GuessTheNumber.Board
         [SerializeField] private int _dispayedNumberPanels;
 
         [SerializeField] private int _currentBoardLocalizationIndex;
-        [SerializeField] private LanguageLocalizationSO[] boardLocalizations;
 
         public int DisplayNumberTime => displayNumberTime;
         public int DispayedNumberPanels => _dispayedNumberPanels;
 
-        public LanguageLocalizationSO[] BoardLocalizations => boardLocalizations;
-
-        public int CurrentBoardLocalizationIndex
-        {
-            get => _currentBoardLocalizationIndex;
-            set => _currentBoardLocalizationIndex = value;
-        }
 
     }
 }
