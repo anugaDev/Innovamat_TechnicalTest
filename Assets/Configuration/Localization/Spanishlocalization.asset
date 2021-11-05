@@ -25,3 +25,12 @@ MonoBehaviour:
   - Ocho
   - Nueve
   - Diez
+  _title: "Cual es el n\xFAmero?"
+  _description: "Identifica la palabra escrita con su n\xFAmero correspondiente"
+  _play: Jugar
+  _exit: Salir
+  _chooseLanguage: Cambiar idioma
+  _backToMenu: "Volver al men\xFA"
+  _fails: 'Fallos :'
+  _successes: 'Aciertos :'
+  _endGame: "Acabar la pr\xE1ctica"

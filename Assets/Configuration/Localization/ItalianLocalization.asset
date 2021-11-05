@@ -25,3 +25,12 @@ MonoBehaviour:
   - Otto
   - Nove
   - Dieci
+  _title: "Qual \xE8 il numero?"
+  _description: Scegli il numero corrispondente alla parola
+  _play: Giocar
+  _exit: Uscita
+  _chooseLanguage: Scegli la lingua
+  _backToMenu: Torna al menu
+  _fails: 'Non riesce :'
+  _successes: 'Successi :'
+  _endGame: Fine del gioco

@@ -20,7 +20,10 @@ namespace GuessTheNumber.Localization
                 {
                     var selectedLanguageIndex = Array.IndexOf(_view.LanguageButtonPanels, button);
                     _model.SetCurrentLanguage(selectedLanguageIndex);
-                    _view.SetCurrentLanguageSelectedText(_model.GetLanguageByIndex(selectedLanguageIndex).languageName);
+
+                    var selectedLanguage = _model.GetLanguageByIndex(selectedLanguageIndex);
+                    _view.SetCurrentLanguageSelectedText(selectedLanguage.LanguageName);
+                    _view.SetLocalizedText(selectedLanguage);
                     _setGameLocalizationCommand.Execute();
                 });
             }

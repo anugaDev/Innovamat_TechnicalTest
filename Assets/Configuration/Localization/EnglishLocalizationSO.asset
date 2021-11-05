@@ -25,3 +25,12 @@ MonoBehaviour:
   - Eight
   - Nine
   - Ten
+  _title: What's the number?
+  _description: Choose the number corresponding to the word
+  _play: Play
+  _exit: Exit
+  _chooseLanguage: Choose Language
+  _backToMenu: Back to Menu
+  _fails: 'Fails :'
+  _successes: 'Successes :'
+  _endGame: End Game

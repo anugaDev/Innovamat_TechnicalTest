@@ -25,3 +25,12 @@ MonoBehaviour:
   - Huit
   - Neuf
   - Dix
+  _title: "Quel est le num\xE9ro ? "
+  _description: 'Choisissez le nombre correspondant au mot '
+  _play: Jouer
+  _exit: Sortir
+  _chooseLanguage: Choisissez la langue
+  _backToMenu: Retour au menu
+  _fails: "\xC9choue :"
+  _successes: "Succ\xE8s :"
+  _endGame: Fin du jeu
