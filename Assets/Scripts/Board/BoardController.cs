@@ -39,7 +39,7 @@ namespace GuessTheNumber.Board
 
         private void SetNewRound()
         {
-            _model.SetRoundsFailed(0);
+            _model.SetCurrentFails(0);
             
             for (var i = 0; i <  _model.CurrentDisplayedNumbers.Length; i ++)
             {
