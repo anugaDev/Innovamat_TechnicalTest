@@ -7,42 +7,20 @@ namespace GuessTheNumber.Board
         private BoardConfiguration _boardConfiguration;
         private string[] _numbers;
         
-        private int _roundsSuccessfull;
+        private int _roundsSuccessful;
         private int _roundsFailed;
         private int _currentFails;
         private int _currentNumberIndex;
         
         private int[] _currentDisplayedNumbers;
 
-        public int CurrentNumberIndex
-        {
-            get => _currentNumberIndex;
-            set => _currentNumberIndex = value;
-        }
+        public int CurrentNumberIndex => _currentNumberIndex;
+        public int CurrentFails => _currentFails;
+        public int RoundsSuccessful => _roundsSuccessful;
+        public int RoundsFailed => _roundsFailed;
+        public int[] CurrentDisplayedNumbers => _currentDisplayedNumbers;
+        public int NumberDisplayTime() => _boardConfiguration.DisplayNumberTime;
 
-        public int CurrentFails
-        {
-            get => _currentFails;
-            set => _currentFails = value;
-        }
-
-        public int RoundsSuccessfull
-        {
-            get => _roundsSuccessfull;
-            set => _roundsSuccessfull = value;
-        }
-
-        public int RoundsFailed
-        {
-            get => _roundsFailed;
-            set => _roundsFailed = value;
-        }
-        
-        public int[] CurrentDisplayedNumbers
-        {
-            get => _currentDisplayedNumbers;
-            set => _currentDisplayedNumbers = value;
-        }
 
         public void SetNumberList(string[] numbers)
         {
@@ -70,10 +48,34 @@ namespace GuessTheNumber.Board
             return _currentFails >= _boardConfiguration.DispayedNumberPanels - 1;
         }
 
-        public int GetNumberDisplayTime()
+        public void SetCurrentFails(int currentFails)
         {
-            return _boardConfiguration.DisplayNumberTime;
+            _currentFails = currentFails;
         }
+
+        public void SetRoundsFailed(int roundsFailed)
+        {
+            _roundsFailed = roundsFailed;
+        }
+
+        public void SetRoundsSuccessful(int roundsSuccessful)
+        {
+            _roundsSuccessful = roundsSuccessful;
+        }
+
+        public void SetRoundCountToZero()
+        {
+            _roundsFailed = 0;
+            _roundsSuccessful = 0;
+        }
+
+        public void SetCurrentNumberIndex(int index)
+        {
+            _currentNumberIndex = index;
+        }
+        
+
+
 
     }
 }

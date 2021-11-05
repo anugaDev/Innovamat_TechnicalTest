@@ -10,15 +10,8 @@ namespace GuessTheNumber.Localization
         [SerializeField] private Text _currentLanguageSelected;
         private DisplayPanelView[] _languageButtons;
 
-        public GameObject GetButtonsPanel()
-        {
-            return _buttonPanel;
-        }
-
-        public DisplayPanelView[] GetLanguageButtonPanels()
-        {
-            return _languageButtons;
-        }
+        public GameObject ButtonsPanel => _buttonPanel;
+        public DisplayPanelView[] LanguageButtonPanels => _languageButtons;
 
         public void SetCurrentLanguageSelectedText(string languageText)
         {

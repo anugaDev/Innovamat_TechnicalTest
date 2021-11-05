@@ -4,10 +4,9 @@ namespace GuessTheNumber.Localization
 {
     public class LocalizationController
     {
-        private LocalizationModel _model;
-        private LocalizationView _view;
-
-        private SetGameLocalizationCommand _setGameLocalizationCommand;
+        private readonly LocalizationModel _model;
+        private readonly LocalizationView _view;
+        private readonly SetGameLocalizationCommand _setGameLocalizationCommand;
         
         public LocalizationController(LocalizationModel model, LocalizationView view, SetGameLocalizationCommand setGameLocalizationCommand)
         {
@@ -15,11 +14,11 @@ namespace GuessTheNumber.Localization
             _view = view;
             _setGameLocalizationCommand = setGameLocalizationCommand;
 
-            foreach(var button in _view.GetLanguageButtonPanels())
+            foreach(var button in _view.LanguageButtonPanels)
             {
-                button.GetPanelButton().onClick.AddListener(() =>
+                button.PanelButton.onClick.AddListener(() =>
                 {
-                    var selectedLanguageIndex = Array.IndexOf(_view.GetLanguageButtonPanels(), button);
+                    var selectedLanguageIndex = Array.IndexOf(_view.LanguageButtonPanels, button);
                     _model.SetCurrentLanguage(selectedLanguageIndex);
                     _view.SetCurrentLanguageSelectedText(_model.GetLanguageByIndex(selectedLanguageIndex).languageName);
                     _setGameLocalizationCommand.Execute();
@@ -27,7 +26,6 @@ namespace GuessTheNumber.Localization
             }
             
             _setGameLocalizationCommand.Execute();
-
         }
     }
 }

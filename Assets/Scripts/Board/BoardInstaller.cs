@@ -24,7 +24,7 @@ namespace GuessTheNumber.Board
             
             for (var i = 0; i < boardConfiguration.DispayedNumberPanels; i++)
             {
-                numberDisplayPanelViews[i] = Instantiate(_displayNumber, _view.GetNumbersPanel());
+                numberDisplayPanelViews[i] = Instantiate(_displayNumber, _view.NumbersPanel());
             }
             _view.SetNumberDisplayPanels(numberDisplayPanelViews);
             

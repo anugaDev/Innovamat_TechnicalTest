@@ -8,41 +8,39 @@ namespace GuessTheNumber.Board
 {
     public class BoardController
     {
-        private BoardModel _model;
-        private BoardView _view;
+        private readonly BoardModel _model;
+        private readonly BoardView _view;
 
         public BoardController(BoardModel model, BoardView view)
         {
             _model = model;
             _view = view;
             
-            foreach(var panel in _view.GetNumberDisplayPanels())
+            foreach(var panel in _view.NumberDisplayPanels)
             {
-                panel.GetPanelButton().onClick.AddListener(() =>
+                panel.PanelButton.onClick.AddListener(() =>
                 {
                     CheckChosenPanel(panel);
                 });
             }
-            _view.GetStartGameEvent().AddListener(() =>
+            
+            _view.StartGameEvent.AddListener(() =>
             {
-                _model.RoundsFailed = 0;
-                _model.RoundsSuccessfull = 0;
-                
+                _model.SetRoundCountToZero();
+
                 _view.SetUserFails(_model.RoundsFailed.ToString());
-                _view.SetUserSuccesses(_model.RoundsSuccessfull.ToString());
+                _view.SetUserSuccesses(_model.RoundsSuccessful.ToString());
                 
                 _view.gameObject.SetActive(true);
                 SetNewRound();
             });
-            _view.GetEndGameEvent().AddListener(() =>
-            {
-                ExitGame();
-            });
+            
+            _view.EndGameEvent.AddListener(ExitGame);
         }
 
         private void SetNewRound()
         {
-            _model.CurrentFails = 0;
+            _model.SetRoundsFailed(0);
             
             for (var i = 0; i <  _model.CurrentDisplayedNumbers.Length; i ++)
             {
@@ -59,68 +57,70 @@ namespace GuessTheNumber.Board
                     
                 numberPanel.SetPanelText(_model.CurrentDisplayedNumbers[i].ToString());
                 
-                numberPanel.GetPanelButton().interactable = true;
+                numberPanel.PanelButton.interactable = true;
             }
             
             SetNumber();
             
-            _view.StartCoroutine(_view.CallActionAfterTime((float) _view.GetTextPanel().GetOpenAnimation().duration,
+            _view.StartCoroutine(_view.CallActionAfterTime((float) _view.TextPanel.OpenAnimation.duration,
                 () =>
                 {
-                    _view.StartCoroutine(_view.CallActionAfterTime(_model.GetNumberDisplayTime(), HideText));
+                    _view.StartCoroutine(_view.CallActionAfterTime(_model.NumberDisplayTime(), HideText));
                 }));
         }
 
         private void SetNumber()
         {
-            _model.CurrentNumberIndex = Random.Range(0, _model.CurrentDisplayedNumbers.Length);
-
+            var numberIndex = Random.Range(0, _model.CurrentDisplayedNumbers.Length);
+            
+            _model.SetCurrentNumberIndex(numberIndex);
+            
             var correctNumber = _model.CurrentDisplayedNumbers[_model.CurrentNumberIndex];
             
-            _view.GetTextPanel().SetPanelText(_model.GetNumber(correctNumber));
+            _view.TextPanel.SetPanelText(_model.GetNumber(correctNumber));
 
-            _view.GetTextPanel().GetOpenAnimation().Play();
+            _view.TextPanel.OpenAnimation.Play();
         }
 
         private void HideText()
         {
-            _view.GetTextPanel().GetCloseAnimation().Play();
+            _view.TextPanel.CloseAnimation.Play();
 
-            _view.StartCoroutine(_view.CallActionAfterTime(
-                (float) _view.GetTextPanel().GetCloseAnimation().duration, SetNumbersPanel));
+            _view.StartCoroutine(_view.CallActionAfterTime
+            ((float) _view.TextPanel.CloseAnimation.duration, SetNumbersPanel));
         }
 
         private void SetNumbersPanel()
         {
             _view.ShowPanelNumbers();
 
-            _view.StartCoroutine(_view.CallActionAfterTime(
-                (float) _view.GetTextPanel().GetCloseAnimation().duration,
+            _view.StartCoroutine(_view.CallActionAfterTime
+            ((float) _view.TextPanel.CloseAnimation.duration,
                 () => _view.SetBlockInputActive(false)));
         }
 
         private void CheckChosenPanel(NumberDisplayPanelView panel)
         {
-            panel.GetPanelButton().interactable = false;
+            panel.PanelButton.interactable = false;
             
-            var selectedPanelIndex = Array.IndexOf(_view.GetNumberDisplayPanels(), panel);
+            var selectedPanelIndex = Array.IndexOf(_view.NumberDisplayPanels, panel);
             
             if (selectedPanelIndex == _model.CurrentNumberIndex)
             {
-                _model.RoundsSuccessfull++;
-                
-                _view.SetUserSuccesses(_model.RoundsSuccessfull.ToString());
+                _model.SetRoundsSuccessful(_model.RoundsSuccessful + 1);
+
+                _view.SetUserSuccesses(_model.RoundsSuccessful.ToString());
                 RoundEnded(selectedPanelIndex);
             }
             
             else
             {
-                _model.CurrentFails++;
-                _view.GetNumberDisplayPanel(selectedPanelIndex).GetFailAnimation().Play();
+                _model.SetCurrentFails(_model.CurrentFails + 1);
+                _view.GetNumberDisplayPanel(selectedPanelIndex).FailAnimation.Play();
 
                 if (_model.IsCurrentRoundFailed())
-                {
-                    _model.RoundsFailed++;
+                { 
+                    _model.SetRoundsFailed(_model.RoundsFailed + 1);
                     _view.SetUserFails(_model.RoundsFailed.ToString());
 
                     RoundEnded(_model.CurrentNumberIndex);
@@ -130,16 +130,16 @@ namespace GuessTheNumber.Board
 
         private void RoundEnded(int winningPanelIndex)
         {
-            _view.GetNumberDisplayPanel(winningPanelIndex).GetSuccessAnimation().Play();
+            _view.GetNumberDisplayPanel(winningPanelIndex).SuccessAnimation.Play();
            
             _view.SetBlockInputActive(true);
 
-            _view.StartCoroutine(_view.CallActionAfterTime((float)_view.GetNumberDisplayPanel(winningPanelIndex).GetSuccessAnimation().duration, () =>
+            _view.StartCoroutine(_view.CallActionAfterTime((float)_view.GetNumberDisplayPanel(winningPanelIndex).SuccessAnimation.duration, () =>
             {
                 _view.CloseNumbersWithAnimation();
 
-                _view.StartCoroutine(_view.CallActionAfterTime(
-                    (float) _view.GetNumberDisplayPanel(0).GetCloseAnimation().duration, SetNewRound));
+                _view.StartCoroutine(_view.CallActionAfterTime
+                ((float) _view.GetNumberDisplayPanel(0).CloseAnimation.duration, SetNewRound));
             }));
         }
         

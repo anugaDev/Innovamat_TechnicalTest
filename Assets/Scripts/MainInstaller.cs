@@ -6,8 +6,13 @@ namespace GuessTheNumber
 {
     public class MainInstaller: MonoBehaviour
     {
+        [Header("Installers")]
+        
         [SerializeField] private BoardInstaller _boardInstaller;
         [SerializeField] private LocalizationInstaller _localizationInstaller;
+        
+        [Header("Configuration")]
+        
         [SerializeField] private BoardConfiguration _boardConfiguration;
         [SerializeField] private GameLocalizationSO _gameLocalizationConfiguration;
         

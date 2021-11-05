@@ -21,7 +21,7 @@ namespace GuessTheNumber.Localization
 
             for (var i = 0; i < languageButtons.Length; i++)
             {
-                languageButtons[i] = Instantiate(_languageButton, _view.GetButtonsPanel().transform);
+                languageButtons[i] = Instantiate(_languageButton, _view.ButtonsPanel.transform);
                 languageButtons[i].SetPanelText(localizationConfiguration.LanguageLocalizations[i].languageName);
             }
             _view.SetLanguageButtons(languageButtons);

@@ -19,49 +19,32 @@ namespace GuessTheNumber.Board
         private UnityEvent _startGame = new UnityEvent();
         private UnityEvent _endGame = new UnityEvent();
         
-        public void SetNumberDisplayPanels(NumberDisplayPanelView[] numberDisplayPanelViews)
-        {
-            _numberDisplayPanelViews = numberDisplayPanelViews;
-        }
-        
-        public NumberDisplayPanelView[] GetNumberDisplayPanels()
-        {
-            return _numberDisplayPanelViews;
-        }
+        public NumberDisplayPanelView[] NumberDisplayPanels => _numberDisplayPanelViews;
+        public DisplayPanelView TextPanel => _textPanelView;
+        public UnityEvent StartGameEvent => _startGame;
+        public UnityEvent EndGameEvent => _endGame;
+        public Transform NumbersPanel() => _numbersPanel;
 
-        public DisplayPanelView GetTextPanel()
-        {
-            return _textPanelView;
-        }
-        
         public NumberDisplayPanelView GetNumberDisplayPanel(int index)
         {
             return _numberDisplayPanelViews[index];
         }
         
-        public UnityEvent GetStartGameEvent()
+        public void SetNumberDisplayPanels(NumberDisplayPanelView[] numberDisplayPanelViews)
         {
-            return _startGame;
+            _numberDisplayPanelViews = numberDisplayPanelViews;
         }
-        
-        public UnityEvent GetEndGameEvent()
-        {
-            return _endGame;
-        }
-        
+
         public void SetBlockInputActive(bool active)
         {
             _blockinput.SetActive(active);
         }
         
-        public Transform GetNumbersPanel()
-        {
-            return _numbersPanel;
-        }
         public void SetUserSuccesses(string successes)
         {
             _successesCounter.text = successes;
         }
+        
         public void SetUserFails(string fails)
         {
             _failsCounter.text = fails;
@@ -71,8 +54,8 @@ namespace GuessTheNumber.Board
         {
             foreach(var  panel in _numberDisplayPanelViews)
             {
-                panel.GetOpenAnimation().Play();
-                panel.GetCloseAnimation().gameObject.SetActive(false);
+                panel.OpenAnimation.Play();
+                panel.CloseAnimation.gameObject.SetActive(false);
             }
         }
 
@@ -80,7 +63,7 @@ namespace GuessTheNumber.Board
         {
             foreach (var panel in _numberDisplayPanelViews)
             {
-                panel.GetCloseAnimation().gameObject.SetActive(true);
+                panel.CloseAnimation.gameObject.SetActive(true);
             }
         }
 
@@ -88,8 +71,8 @@ namespace GuessTheNumber.Board
         {
             foreach (var panel in _numberDisplayPanelViews)
             {
-                panel.GetContentPanel().SetActive(false);
-                panel.GetCloseAnimation().gameObject.SetActive(false);
+                panel.ContentPanel.SetActive(false);
+                panel.CloseAnimation.gameObject.SetActive(false);
             }
         }
 

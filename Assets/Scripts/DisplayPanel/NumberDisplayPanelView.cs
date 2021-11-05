@@ -11,15 +11,9 @@ namespace GuessTheNumber.Panel
         [SerializeField] private PlayableDirector _successAnimation;
         [SerializeField] private PlayableDirector _failAnimation;
 
-        public PlayableDirector GetSuccessAnimation()
-        {
-            return _successAnimation;
-        }
+        public PlayableDirector SuccessAnimation => _successAnimation;
 
-        public PlayableDirector GetFailAnimation()
-        {
-            return _failAnimation;
-        }
+        public PlayableDirector FailAnimation => _failAnimation;
     }
 }
 

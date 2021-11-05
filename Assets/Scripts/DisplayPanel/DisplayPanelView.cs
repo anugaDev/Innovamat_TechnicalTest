@@ -13,31 +13,17 @@ namespace GuessTheNumber.Panel
         [SerializeField] private PlayableDirector _openAnimation;
         [SerializeField] private PlayableDirector _closeAnimation;
 
-        public Button GetPanelButton()
-        {
-            return _button;
-        }
+        public Button PanelButton => _button;
+        public PlayableDirector OpenAnimation=> _openAnimation;
+        public PlayableDirector CloseAnimation => _closeAnimation;
+        public GameObject ContentPanel => _contentPanel;
 
         public void SetPanelText(string text)
         {
             _displayedText.text = text;
         }
         
-        public PlayableDirector GetOpenAnimation()
-        {
-            return _openAnimation;
-        }
-
-        public PlayableDirector GetCloseAnimation()
-        {
-            return _closeAnimation;
-        }
-
-        public GameObject GetContentPanel()
-        {
-            return _contentPanel;
-        }
-        
+       
     }
 }
 
