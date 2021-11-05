@@ -1,7 +1,4 @@
-﻿using GuessTheNumber.Board;
-using GuessTheNumber.Localization;
-using GuessTheNumber.Panel;
-using TMPro;
+﻿using GuessTheNumber.Panel;
 using UnityEngine;
 
 namespace GuessTheNumber.Board
@@ -24,7 +21,7 @@ namespace GuessTheNumber.Board
             
             for (var i = 0; i < boardConfiguration.DispayedNumberPanels; i++)
             {
-                numberDisplayPanelViews[i] = Instantiate(_displayNumber, _view.NumbersPanel());
+                numberDisplayPanelViews[i] = Instantiate(_displayNumber, _view.NumbersPanel);
             }
             _view.SetNumberDisplayPanels(numberDisplayPanelViews);
             

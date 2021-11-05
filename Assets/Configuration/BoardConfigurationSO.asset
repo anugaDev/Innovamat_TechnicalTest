@@ -15,6 +15,3 @@ MonoBehaviour:
   displayNumberTime: 2
   _dispayedNumberPanels: 3
   _currentBoardLocalizationIndex: 0
-  boardLocalizations:
-  - {fileID: 11400000, guid: ef83cb6c6dc675c41b434c29ee407b80, type: 2}
-  - {fileID: 11400000, guid: 2b319fd80c0131a4c944340f866ee7a4, type: 2}

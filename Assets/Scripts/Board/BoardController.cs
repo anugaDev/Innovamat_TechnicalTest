@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using GuessTheNumber.Panel;
-using UnityEngine.SocialPlatforms;
 using Random = UnityEngine.Random;
 
 namespace GuessTheNumber.Board

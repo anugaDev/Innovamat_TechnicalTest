@@ -1,6 +1,4 @@
-﻿using GuessTheNumber.Localization;
-
-namespace GuessTheNumber.Board
+﻿namespace GuessTheNumber.Board
 {
     public class BoardModel
     {

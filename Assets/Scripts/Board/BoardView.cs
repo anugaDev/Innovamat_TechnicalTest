@@ -23,7 +23,7 @@ namespace GuessTheNumber.Board
         public DisplayPanelView TextPanel => _textPanelView;
         public UnityEvent StartGameEvent => _startGame;
         public UnityEvent EndGameEvent => _endGame;
-        public Transform NumbersPanel() => _numbersPanel;
+        public Transform NumbersPanel => _numbersPanel;
 
         public NumberDisplayPanelView GetNumberDisplayPanel(int index)
         {

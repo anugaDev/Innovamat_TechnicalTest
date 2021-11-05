@@ -1,5 +1,4 @@
-﻿using GuessTheNumber.Localization;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GuessTheNumber.Board
 {
