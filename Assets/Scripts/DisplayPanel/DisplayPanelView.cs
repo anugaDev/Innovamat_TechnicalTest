@@ -22,8 +22,6 @@ namespace GuessTheNumber.Panel
         {
             _displayedText.text = text;
         }
-        
-       
     }
 }
 

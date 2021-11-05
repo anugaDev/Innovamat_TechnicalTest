@@ -13,7 +13,5 @@ namespace GuessTheNumber.Board
 
         public int DisplayNumberTime => displayNumberTime;
         public int DispayedNumberPanels => _dispayedNumberPanels;
-
-
     }
 }

@@ -21,7 +21,6 @@ namespace GuessTheNumber.Board
         public int[] CurrentDisplayedNumbers => _currentDisplayedNumbers;
         public int NumberDisplayTime() => _boardConfiguration.DisplayNumberTime;
 
-
         public void SetNumberList(string[] numbers)
         {
             _numbers = numbers;
@@ -73,9 +72,5 @@ namespace GuessTheNumber.Board
         {
             _currentNumberIndex = index;
         }
-        
-
-
-
     }
 }
