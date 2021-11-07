@@ -64,7 +64,7 @@ namespace GuessTheNumber.Board
             _view.StartCoroutine(_view.CallActionAfterTime((float) _view.TextPanel.OpenAnimation.duration,
                 () =>
                 {
-                    _view.StartCoroutine(_view.CallActionAfterTime(_model.NumberDisplayTime(), HideText));
+                    _view.StartCoroutine(_view.CallActionAfterTime(_model.NumberDisplayTime, HideText));
                 }));
         }
 

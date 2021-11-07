@@ -17,7 +17,7 @@
         public int RoundsSuccessful => _roundsSuccessful;
         public int RoundsFailed => _roundsFailed;
         public int[] CurrentDisplayedNumbers => _currentDisplayedNumbers;
-        public int NumberDisplayTime() => _boardConfiguration.DisplayNumberTime;
+        public int NumberDisplayTime => _boardConfiguration.DisplayNumberTime;
 
         public void SetNumberList(string[] numbers)
         {

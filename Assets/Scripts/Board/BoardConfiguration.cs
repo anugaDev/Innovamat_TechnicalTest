@@ -8,8 +8,6 @@ namespace GuessTheNumber.Board
         [SerializeField] private int displayNumberTime;
         [SerializeField] private int _dispayedNumberPanels;
 
-        [SerializeField] private int _currentBoardLocalizationIndex;
-
         public int DisplayNumberTime => displayNumberTime;
         public int DispayedNumberPanels => _dispayedNumberPanels;
     }

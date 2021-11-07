@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayNumberTime: 2
   _dispayedNumberPanels: 3
-  _currentBoardLocalizationIndex: 0
